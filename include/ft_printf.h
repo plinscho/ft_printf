@@ -12,6 +12,7 @@
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
+# pragma pack(1)
 
 // Bibliotecas auxiliares /
 //
@@ -44,7 +45,6 @@ int		ft_print_x(t_print *tab, int control, char x); // ok
 int		ft_put_hexa(unsigned long long number, t_print *tab, int control); // ok
 int		get_len(unsigned long long number, char *str); //ok
 
-int		ft_print_perc(t_print *tab, char c, int control); // ok
 int		ft_print_unsigned(t_print *tab, int control);	// ok
 
 int		ft_putchar(char c, t_print *tab);
