@@ -40,7 +40,7 @@ int    ft_dectoptr(unsigned long int decimal, t_print *tab)
     if (decimal == 0)
         return (0);
 
-    ft_dectohex(decimal/16, tab);
+    ft_dectoptr(decimal/16, tab);
 
     char                hexa_digit;
     unsigned long int   reminder;

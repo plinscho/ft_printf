@@ -16,11 +16,10 @@ int		ft_get_ptr(t_print *tab, int control)
 {
 	unsigned long int		adress;
 
-	adress = va_arg(tab -> arguments, unsigned long int);
+	adress = (unsigned long int)va_arg(tab -> arguments, void *);
 	if (write(1, "0x", 2) == -1)
 	   return (-1);
 	tab -> total_len += 2;
-	printf("\nAdress pointed: %lu\n", adress);
 	control = ft_dectoptr(adress, tab);
 	if (control == -1)
 		return (-1);

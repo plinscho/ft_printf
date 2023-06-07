@@ -16,7 +16,7 @@ int main(void)
 	int len_pf = 0;
 	int len_ftpf = 0;
 
-/*
+
 	printf("\n\nTESTS\n\n" );	
 
 	// TEST 1 -- LEN WITHOUT '%'
@@ -71,7 +71,7 @@ int main(void)
 	ft_printf("char x|X: %c\n\n\n", x);
 
 	
-*/
+
 	// TEST 4 -- HEXADECIMAL 
 	
 	unsigned int	hex_num;
