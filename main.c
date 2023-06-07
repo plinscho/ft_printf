@@ -85,21 +85,17 @@ int main(void)
 	ptr = &hex_num;
 	ptr_2 = &hex_2;
 
-	len_pf = 	  printf("hex: %x hex_2: %x\t hex_num MAYU: %X \n", hex_num, hex_2, (hex_num - 32));
-    len_ftpf = ft_printf("hex: %x hex_2: %x\t hex_num MAYU: %X \n", hex_num, hex_2, (hex_num - 32));
+	len_pf = 	  printf("hex: %x hex_2: %x\t hex_num MAYU: %X \n", hex_num, hex_2, hex_num);
+    len_ftpf = ft_printf("hex: %x hex_2: %x\t hex_num MAYU: %X \n", hex_num, hex_2, hex_num);
    	check_len(len_pf, len_ftpf);
 
 	len_pf = 	  printf("ptr: %p \t \n", &hex_num);
     len_ftpf = ft_printf("hex: %p \t \n", ptr);
    	check_len(len_pf, len_ftpf);
 
-	len_pf = 	  printf("ptr_2: %u \t \n", hex_2);
-    len_ftpf = ft_printf("hex_2: %p \t \n", hex_2);
+	len_pf = 	  printf("ptr_2: %p \t \n", &hex_2);
+    len_ftpf = ft_printf("hex_2: %p \t \n", &hex_2);
    	check_len(len_pf, len_ftpf);
-
-
-
-
 
 	return (0);
 

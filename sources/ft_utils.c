@@ -15,6 +15,8 @@
 int		ft_putchar(char c, t_print *tab)
 {
 	int print;
+	if (ft_isalpha(c) == 1 && tab->specifier == 'X')
+		c -= 32;
 	print = write(1, &c, 1);
 	if (print == -1)
 		return (-1);
