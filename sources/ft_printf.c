@@ -37,7 +37,7 @@ int ft_check_specifier(const char *format, t_print *tab, int position)
 	else if (format[position] == 'x' || format[position] == 'X')
 		check = ft_print_x(tab, format[position]);
 	else if (format[position] == 'p')
-		check = ft_get_ptr(tab, check);
+		check = ft_get_ptr(tab);
 	return (check);
 }
 

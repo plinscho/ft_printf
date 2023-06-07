@@ -12,15 +12,20 @@
 
 #include "ft_printf.h"
 
-int		ft_get_ptr(t_print *tab, int control)
+int		ft_get_ptr(t_print *tab)
 {
 	unsigned long int		adress;
+	int 					control;
 
+	control = 0;
 	adress = (unsigned long int)va_arg(tab -> arguments, void *);
 	if (write(1, "0x", 2) == -1)
 	   return (-1);
 	tab -> total_len += 2;
-	control = ft_dectoptr(adress, tab);
+	if (adress == 0)
+		control = ft_putchar('0', tab);
+	else
+		control = ft_dectoptr(adress, tab);
 	if (control == -1)
 		return (-1);
 	return (0);

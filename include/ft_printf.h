@@ -12,7 +12,6 @@
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-# pragma pack(1)
 
 // Bibliotecas auxiliares /
 //
@@ -40,7 +39,7 @@ int		ft_check_specifier(const char *format, t_print *tab, int position); // ok
 int		ft_print_char(t_print *tab, int control);	// ok
 int		ft_print_string(t_print *tab, int control);	// ok
 int		ft_print_int(t_print *tab, int control);	// ok
-int		ft_get_ptr(t_print *tab, int control); 		// ok
+int		ft_get_ptr(t_print *tab); 		// ok
 int 	ft_print_x(t_print *tab, const char x);
 int    	ft_dectohex(unsigned int decimal, t_print *tab);
 int    	ft_dectoptr(unsigned long int decimal, t_print *tab);

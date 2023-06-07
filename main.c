@@ -75,16 +75,28 @@ int main(void)
 	// TEST 4 -- HEXADECIMAL 
 	
 	unsigned int	hex_num;
+	unsigned int	hex_2;
+	unsigned int 	*ptr;
+	unsigned int	*ptr_2;
+
 	hex_num = 303030;
-	len_pf = 	  printf("hex: %x \t \n", hex_num);
-    len_ftpf = ft_printf("hex: %x \t \n", hex_num);
+	hex_2 = 0;
+
+	ptr = &hex_num;
+	ptr_2 = &hex_2;
+
+	len_pf = 	  printf("hex: %x hex_2: %x\t hex_num MAYU: %X \n", hex_num, hex_2, (hex_num - 32));
+    len_ftpf = ft_printf("hex: %x hex_2: %x\t hex_num MAYU: %X \n", hex_num, hex_2, (hex_num - 32));
    	check_len(len_pf, len_ftpf);
 
-	unsigned int *ptr;
-	ptr = &hex_num;
 	len_pf = 	  printf("ptr: %p \t \n", &hex_num);
     len_ftpf = ft_printf("hex: %p \t \n", ptr);
    	check_len(len_pf, len_ftpf);
+
+	len_pf = 	  printf("ptr_2: %u \t \n", hex_2);
+    len_ftpf = ft_printf("hex_2: %p \t \n", hex_2);
+   	check_len(len_pf, len_ftpf);
+
 
 
 

@@ -61,10 +61,16 @@ int    ft_dectoptr(unsigned long int decimal, t_print *tab)
 int     ft_print_x(t_print *tab, const char c)
 {
     unsigned int    decimal;
+    int control;
     
+    control = 0;
     tab ->specifier = c;
     decimal = va_arg(tab->arguments, unsigned int); // capturing number
-    ft_dectohex(decimal, tab);  
-    
+    if (decimal == 0)
+        control = ft_putchar('0', tab);
+    else
+        control = ft_dectohex(decimal, tab);
+    if (control == -1)
+        return (-1);
     return (0);
 }
