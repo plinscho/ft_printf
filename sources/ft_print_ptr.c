@@ -14,13 +14,14 @@
 
 int		ft_get_ptr(t_print *tab, int control)
 {
-	unsigned long long		adress;
+	unsigned long int		adress;
 
-	adress = va_arg(tab -> arguments, unsigned long long);
+	adress = va_arg(tab -> arguments, unsigned long int);
 	if (write(1, "0x", 2) == -1)
 	   return (-1);
 	tab -> total_len += 2;
-	control = ft_put_hexa(adress, tab, control);
+	printf("\nAdress pointed: %lu\n", adress);
+	control = ft_dectoptr(adress, tab);
 	if (control == -1)
 		return (-1);
 	return (0);

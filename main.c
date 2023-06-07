@@ -11,11 +11,12 @@ if (len_pf == len_ftpf)
 int main(void)
 {
 	char *string = "Hey Bud! char";
+	char *string2 = "I'm fine!";
 	char c = 'a';
 	int len_pf = 0;
 	int len_ftpf = 0;
 
-
+/*
 	printf("\n\nTESTS\n\n" );	
 
 	// TEST 1 -- LEN WITHOUT '%'
@@ -25,33 +26,16 @@ int main(void)
 
 	printf("size of t_print: %ld\n", sizeof(t_print));
 
-/*	// TEST 2 -- CHARS
+	// TEST 2 -- CHARS && strings
 	len_pf = 0;
-	len_pf = printf("string: %s\tchar: %c%c\n", string, c, 'b');
-	len_ftpf = ft_printf("string: %s\tchar: %c%c\n", string, c, 'b');
+	len_pf = printf("string: %s string_2: %s\tchar: %c%c\n", string, string2, c, 'b');
+	len_ftpf = ft_printf("string: %s string_2: %s\tchar: %c%c\n", string, string2, c, 'b');
 	check_len(len_pf, len_ftpf);
-
-	// TEST 3 -- HEXADECIMAL 'p'
-	int x;
-	int *ptr_x = &x;
-	unsigned long int adress;
-
-	len_pf = printf("string: %s\tadress: %p\n", string, &x);
-    len_ftpf = ft_printf("string: %s\tadress: %p\n", string, ptr_x);
-	check_len(len_pf, len_ftpf);
-
-	// TEST 4 -- HEXADECIMAL 
-	
-	unsigned int	hex_num = 303030;
-
-	len_pf = 	  printf("string: %s\tadress: %p \t hex: %x \t hex_mayus: %X\n", string, &x, hex_num, hex_num);
-    len_ftpf = ft_printf("string: %s\tadress: %p \t hex: %x \t hex_mayus: %X\n", string, ptr_x, hex_num, hex_num);
-   	check_len(len_pf, len_ftpf);
 
 	// TEST 5 -- % 
 
-	len_pf = printf("This is a test %% %% %%% %%%%%\n");
-	len_ftpf = printf("This is a test %% %% %%% %%%%%\n");
+	len_pf = printf("This is a test %% %% %% %%%%\n");
+	len_ftpf = printf("This is a test %% %% %% %%%%\n");
    	check_len(len_pf, len_ftpf);
 
 	// TEST 6 -- NULL STRINGS
@@ -69,9 +53,44 @@ int main(void)
 	len_ftpf = ft_printf("Unsigned int: %u\n", uns_num);
 	check_len(len_pf, len_ftpf);
 
+	// TEST -- INTS 'i' || 'd'
+	int a = 3;
+	int b = 6;
+
+	len_pf = printf("int a: %d \t int b: %i\n", a, b);
+    len_ftpf = ft_printf("int a: %d \t int b: %i\n", a, b);
+	check_len(len_pf, len_ftpf);
+
+	void *stuff = NULL;
+	char x = 'x';
+	int test;
+	
+	test = (int)x;
+	//printf("size of void * : %lu bytes.\n", sizeof(stuff));
+	//printf("char: %c mayus: %c\tASCII: %i\n", x, (x - 32), test);
+	ft_printf("char x|X: %c\n\n\n", x);
+
+	
+*/
+	// TEST 4 -- HEXADECIMAL 
+	
+	unsigned int	hex_num;
+	hex_num = 303030;
+	len_pf = 	  printf("hex: %x \t \n", hex_num);
+    len_ftpf = ft_printf("hex: %x \t \n", hex_num);
+   	check_len(len_pf, len_ftpf);
+
+	unsigned int *ptr;
+	ptr = &hex_num;
+	len_pf = 	  printf("ptr: %p \t \n", &hex_num);
+    len_ftpf = ft_printf("hex: %p \t \n", ptr);
+   	check_len(len_pf, len_ftpf);
+
+
+
+
 	return (0);
 
-
-*/
 }
+
 

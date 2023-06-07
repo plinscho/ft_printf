@@ -19,7 +19,7 @@ RM = rm -f
 ################################## SOURCES
 
 SRC_FILES = ft_printf ft_print_char ft_print_int ft_print_string ft_utils \
-			ft_print_unsigned ft_print_hexadecimal ft_print_ptr
+			ft_print_unsigned ft_print_hex ft_print_ptr
 
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))

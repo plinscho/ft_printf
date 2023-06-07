@@ -14,11 +14,11 @@
 
 int		ft_putchar(char c, t_print *tab)
 {
-	int lenght;
-	lenght = write(1, &c, 1);
-	if (lenght == -1)
+	int print;
+	print = write(1, &c, 1);
+	if (print == -1)
 		return (-1);
-	tab -> total_len += lenght;
+	tab -> total_len += print;
 	return (0);
 }
 

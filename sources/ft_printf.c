@@ -24,20 +24,20 @@ int ft_check_specifier(const char *format, t_print *tab, int position)
 	int		check;
 
 	check = 0;
-    if (format[position] == 'c')
-		check = ft_print_char(tab, check);
-    else if (format[position] == 's')
+    if (format[position] == 'c') 										//ok
+		check = ft_print_char(tab, check);								
+    else if (format[position] == 's')									//ok
 		check = ft_print_string(tab, check);
+	else if (format[position] == 'i' || format[position] == 'd')		//ok
+		check = ft_print_int(tab, check);
+	else if (format[position] == '%')									//ok
+		check = ft_putchar('%', tab);
+	else if (format[position] == 'u')									//ok
+		check = ft_print_unsigned(tab, check);
+	else if (format[position] == 'x' || format[position] == 'X')
+		check = ft_print_x(tab, format[position]);
 	else if (format[position] == 'p')
 		check = ft_get_ptr(tab, check);
-    else if (format[position] == 'i' || format[position] == 'd')
-		check = ft_print_int(tab, check);
-	else if (format[position] == 'x' || format[position] == 'X')
-		check = ft_print_x(tab, check, format[position]);
-	else if (format[position] == '%')
-		check = ft_putchar('%', tab);
-	else if (format[position] == 'u')
-		check = ft_print_unsigned(tab, check);
 	return (check);
 }
 
@@ -54,21 +54,23 @@ int ft_printf(const char *format, ...)
 		free(tab);
 		return (-1);
 	}
-	tab = ft_initialize_tab(tab);				// put variables to 0;
 	va_start(tab -> arguments, format);	// start va_list, which is in t_print
 	i = 0;
 	return_val = 0;
+	control = 0;
 	while(format[i] && control != -1)	// start iterating the input untill it finds '\0'
 	{
+		tab = ft_initialize_tab(tab);				// put variables to 0;
 		control = 0;
 		if (format[i] == '%')
 			control = ft_check_specifier(format, tab, ++i);
 		else
 			control = ft_putchar(format[i], tab);			
 		i++;
+		return_val += tab -> total_len;
+
 	}
 	va_end(tab -> arguments);
-	return_val += tab -> total_len;
 	free(tab);
 	if (control == -1)
 		return (-1);

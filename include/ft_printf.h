@@ -41,16 +41,15 @@ int		ft_print_char(t_print *tab, int control);	// ok
 int		ft_print_string(t_print *tab, int control);	// ok
 int		ft_print_int(t_print *tab, int control);	// ok
 int		ft_get_ptr(t_print *tab, int control); 		// ok
-int		ft_print_x(t_print *tab, int control, char x); // ok
-int		ft_put_hexa(unsigned long long number, t_print *tab, int control); // ok
-int		get_len(unsigned long long number, char *str); //ok
+int 	ft_print_x(t_print *tab, const char x);
+int    	ft_dectohex(unsigned int decimal, t_print *tab);
+int    	ft_dectoptr(unsigned long int decimal, t_print *tab);
 
 int		ft_print_unsigned(t_print *tab, int control);	// ok
 
 int		ft_putchar(char c, t_print *tab);
 int		ft_putstr(char *string, t_print *tab);
 void	ft_strup(char *str);
-char	*ft_utoa(unsigned int number);
 int		ft_count_digits(unsigned int number);
 char    *ft_utoa(unsigned int number);
 
