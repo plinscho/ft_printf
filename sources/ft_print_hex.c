@@ -23,35 +23,12 @@ int    ft_dectohex(unsigned int decimal, t_print *tab)
     unsigned int reminder;
     int          control;
 
+    control = 0;
     reminder = decimal % 16;
     if (reminder < 10)
         hexa_digit = reminder + '0';
     else
         hexa_digit = reminder - 10 + 'a';
-
-    control = ft_putchar(hexa_digit, tab);
-    if (control == -1)
-        return (-1);
-    return (0);
-}
-
-int    ft_dectoptr(unsigned long int decimal, t_print *tab)
-{
-    if (decimal == 0)
-        return (0);
-
-    ft_dectoptr(decimal/16, tab);
-
-    char                hexa_digit;
-    unsigned long int   reminder;
-    int                 control;
-
-    reminder = decimal % 16;
-    if (reminder < 10)
-        hexa_digit = reminder + '0';
-    else
-        hexa_digit = reminder - 10 + 'a';
-
     control = ft_putchar(hexa_digit, tab);
     if (control == -1)
         return (-1);

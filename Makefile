@@ -10,7 +10,7 @@ LIBFT = libft
 OBJ_DIR = objects/
 SRC_DIR = sources/
 
-CC = gcc
+CCs = gcc
 CFLAGS = -Wall -Wextra -Werror -I
 AR = ar rcs
 
@@ -40,7 +40,7 @@ $(NAME): $(OBJ)
 
 $(OBJ_DIR)%.o : $(SRC_DIR)%.c | $(OBJF)
 		@echo "Compiling : $< "c
-		@$(CC) $(CFLAGS) $(INC) -c $< -o $@
+		@$(CCs) $(CFLAGS) $(INC) -c $< -o $@
 
 $(OBJF):
 		@mkdir -p $(OBJ_DIR)

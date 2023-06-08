@@ -16,8 +16,40 @@ int main(void)
 	int len_pf = 0;
 	int len_ftpf = 0;
 
+// TEST -- INTS 'i' || 'd'
+	int a = 2147483647;
+	int b = -2147483648;
 
-	printf("\n\nTESTS\n\n" );	
+	len_pf = printf("int a: %d \t int b: %i\n", a, b);
+    len_ftpf = ft_printf("int a: %d \t int b: %i\n", a, b);
+	check_len(len_pf, len_ftpf);
+
+	// TEST 4 -- HEXADECIMAL 
+	
+	unsigned int	hex_num;
+	unsigned int	hex_2;
+	unsigned int 	*ptr;
+	unsigned int	*ptr_2;
+
+	hex_num = 404040;
+	hex_2 = 404040;
+
+	ptr = &hex_num;
+	ptr_2 = &hex_2;
+
+	len_pf = 	  printf("hex: %x hex_2: %x\t hex_num MAYU: %X \n", hex_num, hex_2, hex_num);
+    len_ftpf = ft_printf("hex: %x hex_2: %x\t hex_num MAYU: %X \n", hex_num, hex_2, hex_num);
+   	check_len(len_pf, len_ftpf);
+
+	len_pf = 	  printf("ptr: %p \t2:%p \n", ptr, ptr_2);
+    len_ftpf = ft_printf("hex: %p \t2:%p \n", ptr, ptr_2);
+   	check_len(len_pf, len_ftpf);
+
+	len_pf = 	  printf("ptr_2: %p \t \n", &hex_2);
+    len_ftpf = ft_printf("hex_2: %p \t \n", &hex_2);
+   	check_len(len_pf, len_ftpf);
+
+/*	printf("\n\nTESTS\n\n" );	
 
 	// TEST 1 -- LEN WITHOUT '%'
 	len_pf = printf("this is a string\n");
@@ -53,14 +85,6 @@ int main(void)
 	len_ftpf = ft_printf("Unsigned int: %u\n", uns_num);
 	check_len(len_pf, len_ftpf);
 
-	// TEST -- INTS 'i' || 'd'
-	int a = 3;
-	int b = 6;
-
-	len_pf = printf("int a: %d \t int b: %i\n", a, b);
-    len_ftpf = ft_printf("int a: %d \t int b: %i\n", a, b);
-	check_len(len_pf, len_ftpf);
-
 	void *stuff = NULL;
 	char x = 'x';
 	int test;
@@ -72,31 +96,8 @@ int main(void)
 
 	
 
-	// TEST 4 -- HEXADECIMAL 
 	
-	unsigned int	hex_num;
-	unsigned int	hex_2;
-	unsigned int 	*ptr;
-	unsigned int	*ptr_2;
-
-	hex_num = 303030;
-	hex_2 = 0;
-
-	ptr = &hex_num;
-	ptr_2 = &hex_2;
-
-	len_pf = 	  printf("hex: %x hex_2: %x\t hex_num MAYU: %X \n", hex_num, hex_2, hex_num);
-    len_ftpf = ft_printf("hex: %x hex_2: %x\t hex_num MAYU: %X \n", hex_num, hex_2, hex_num);
-   	check_len(len_pf, len_ftpf);
-
-	len_pf = 	  printf("ptr: %p \t \n", &hex_num);
-    len_ftpf = ft_printf("hex: %p \t \n", ptr);
-   	check_len(len_pf, len_ftpf);
-
-	len_pf = 	  printf("ptr_2: %p \t \n", &hex_2);
-    len_ftpf = ft_printf("hex_2: %p \t \n", &hex_2);
-   	check_len(len_pf, len_ftpf);
-
+*/
 	return (0);
 
 }

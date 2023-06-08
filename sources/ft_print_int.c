@@ -12,19 +12,37 @@
 
 #include "ft_printf.h"
 
+int	ft_putint(int n, t_print *tab)
+{
+	long int	nb;
+	int			control;
+
+	nb = n;
+	if (nb < 0)
+	{
+		control = ft_putchar('-', tab);
+		if (control == -1)
+			return (-1);
+		nb *= (-1);
+	}
+	if (nb > 9)
+	{
+		ft_putint(nb / 10, tab);
+	}
+	control = 0;
+	control = ft_putchar(nb % 10 + '0', tab);
+	if (control == -1)
+		return (-1);
+	return (0);
+}
+
 int ft_print_int(t_print *tab, int control)
 {
 	int		num;
-	char	*itoa;
 
 	num = va_arg(tab -> arguments, int);
-	itoa = ft_itoa(num);
-	if (!itoa)
-		return (-1);
-	control = write(1, itoa, ft_strlen(itoa));
+	control = ft_putint(num, tab);
 	if (control == -1)
 		return (-1);
-	tab -> total_len += control;
-	free(itoa);
 	return (0);
 }

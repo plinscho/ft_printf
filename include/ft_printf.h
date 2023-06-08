@@ -43,6 +43,8 @@ int		ft_get_ptr(t_print *tab); 		// ok
 int 	ft_print_x(t_print *tab, const char x);
 int    	ft_dectohex(unsigned int decimal, t_print *tab);
 int    	ft_dectoptr(unsigned long int decimal, t_print *tab);
+int		ft_putint(int n, t_print *tab);
+
 
 int		ft_print_unsigned(t_print *tab, int control);	// ok
 
