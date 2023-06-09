@@ -6,7 +6,7 @@
 /*   By: plinscho <plinscho@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 11:17:56 by plinscho          #+#    #+#             */
-/*   Updated: 2023/06/02 17:40:20 by plinscho         ###   ########.fr       */
+/*   Updated: 2023/06/09 16:18:28 by plinscho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int		ft_putint(int n, t_print *tab);
 
 int		ft_print_unsigned(t_print *tab, int control);	// ok
 
-int		ft_putchar(char c, t_print *tab);
+int		ft_putchar(int c, t_print *tab);
 int		ft_putstr(char *string, t_print *tab);
 void	ft_strup(char *str);
 int		ft_count_digits(unsigned int number);

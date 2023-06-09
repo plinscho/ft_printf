@@ -6,13 +6,13 @@
 /*   By: plinscho <plinscho@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 15:23:47 by plinscho          #+#    #+#             */
-/*   Updated: 2023/06/02 15:35:26 by plinscho         ###   ########.fr       */
+/*   Updated: 2023/06/09 16:29:14 by plinscho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_putchar(char c, t_print *tab)
+int		ft_putchar(int c, t_print *tab)
 {
 	int print;
 	if (ft_isalpha(c) == 1 && tab->specifier == 'X')
@@ -40,15 +40,3 @@ int	ft_putstr(char *string, t_print *tab)
 	return (0);
 }
 
-void	ft_strup(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if ((str[i] >= 'a') && (str[i] <= 'z'))
-			str[i] -= 32; 
-		i++;
-	}
-}

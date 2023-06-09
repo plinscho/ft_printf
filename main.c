@@ -22,6 +22,8 @@ int main(void)
 
 	len_pf = printf("int a: %d \t int b: %i\n", a, b);
     len_ftpf = ft_printf("int a: %d \t int b: %i\n", a, b);
+	ft_printf("asdfghj:%x\n", -1);
+	printf("asdfghj:%x\n", -1);
 	check_len(len_pf, len_ftpf);
 
 	// TEST 4 -- HEXADECIMAL 
@@ -41,15 +43,15 @@ int main(void)
     len_ftpf = ft_printf("hex: %x hex_2: %x\t hex_num MAYU: %X \n", hex_num, hex_2, hex_num);
    	check_len(len_pf, len_ftpf);
 
-	len_pf = 	  printf("ptr: %p \t2:%p \n", ptr, ptr_2);
-    len_ftpf = ft_printf("hex: %p \t2:%p \n", ptr, ptr_2);
+	len_pf = 	  printf("ptr: %p \t2:%p \n", ptr, "");
+    len_ftpf = ft_printf("hex: %p \t2:%p \n", ptr, "");
    	check_len(len_pf, len_ftpf);
 
 	len_pf = 	  printf("ptr_2: %p \t \n", &hex_2);
     len_ftpf = ft_printf("hex_2: %p \t \n", &hex_2);
    	check_len(len_pf, len_ftpf);
 
-/*	printf("\n\nTESTS\n\n" );	
+	printf("\n\nTESTS\n\n" );	
 
 	// TEST 1 -- LEN WITHOUT '%'
 	len_pf = printf("this is a string\n");
@@ -97,7 +99,7 @@ int main(void)
 	
 
 	
-*/
+
 	return (0);
 
 }
