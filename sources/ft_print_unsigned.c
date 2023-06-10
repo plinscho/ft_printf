@@ -28,28 +28,13 @@ int	ft_print_unsigned(t_print *tab, int control)
 	return (0);
 }
 
-int		ft_count_digits(unsigned int number)
-{
-	int counter;
-
-	counter = 0;
-	if (number == 0)
-		return (1);
-	while (number >= 1)
-	{
-		counter++;
-		number /= 10;
-	}
-	return (counter);
-}
-
 char	*ft_utoa(unsigned int number)
 {
 	char	*return_str;
 	int		digits;
-	
+
 	digits = ft_count_digits(number);
-	return_str = (char *)ft_calloc(digits + 1 , sizeof(char));
+	return_str = (char *)ft_calloc(digits + 1, sizeof(char));
 	if (!return_str)
 		return (NULL);
 	digits--;
@@ -62,6 +47,3 @@ char	*ft_utoa(unsigned int number)
 	return_str[0] = (number % 10) + '0';
 	return (return_str);
 }
-
-
-

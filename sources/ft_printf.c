@@ -12,67 +12,72 @@
 
 #include "ft_printf.h"
 
-t_print *ft_initialize_tab(t_print *tab)
+t_print	*ft_initialize_tab(t_print *tab)
 {
 	tab -> specifier = '0';
-    tab -> total_len = 0;
-    return (tab);
+	tab -> total_len = 0;
+	return (tab);
 }
 
-int ft_check_specifier(const char *format, t_print *tab, int position)
+int	ft_iterate_format(const char *fmt, int print_len, int control, t_print *tab)
+{
+	int		i;
+
+	i = 0;
+	while (fmt[i] && control != -1)
+	{
+		tab = ft_initialize_tab(tab);
+		control = 0;
+		if (fmt[i] == '%')
+			control = ft_check_specifier(fmt, tab, ++i);
+		else
+			control = ft_putchar(fmt[i], tab);
+		i++;
+		if (control == -1)
+			return (-1);
+		print_len += tab -> total_len;
+	}
+	return (print_len);
+}
+
+int	ft_check_specifier(const char *fmt, t_print *tab, int position)
 {
 	int		check;
 
 	check = 0;
-    if (format[position] == 'c') 										//ok
-		check = ft_print_char(tab, check);								
-    else if (format[position] == 's')									//ok
+	if (fmt[position] == 'c')
+		check = ft_print_char(tab, check);
+	else if (fmt[position] == 's')
 		check = ft_print_string(tab, check);
-	else if (format[position] == 'i' || format[position] == 'd')		//ok
+	else if (fmt[position] == 'i' || fmt[position] == 'd')
 		check = ft_print_int(tab, check);
-	else if (format[position] == '%')									//ok
+	else if (fmt[position] == '%')
 		check = ft_putchar('%', tab);
-	else if (format[position] == 'u')									//ok
+	else if (fmt[position] == 'u')
 		check = ft_print_unsigned(tab, check);
-	else if (format[position] == 'x' || format[position] == 'X')
-		check = ft_print_x(tab, format[position]);
-	else if (format[position] == 'p')
+	else if (fmt[position] == 'x' || fmt[position] == 'X')
+		check = ft_print_x(tab, fmt[position]);
+	else if (fmt[position] == 'p')
 		check = ft_get_ptr(tab);
 	return (check);
 }
 
-int ft_printf(const char *format, ...)
+int	ft_printf(const char *fmt, ...)
 {
 	t_print	*tab;
-	int 	i;
-	int		return_val;
+	int		print_len;
 	int		control;
 
-	tab = (t_print *)malloc(sizeof(t_print)); //allocate memory to create list
+	tab = (t_print *)malloc(sizeof(t_print));
 	if (!tab)
-	{
-		free(tab);
 		return (-1);
-	}
-	va_start(tab -> arguments, format);	// start va_list, which is in t_print
-	i = 0;
-	return_val = 0;
+	va_start(tab -> arguments, fmt);
 	control = 0;
-	while(format[i] && control != -1)	// start iterating the input untill it finds '\0'
-	{
-		tab = ft_initialize_tab(tab);				// put variables to 0;
-		control = 0;
-		if (format[i] == '%')
-			control = ft_check_specifier(format, tab, ++i);
-		else
-			control = ft_putchar(format[i], tab);			
-		i++;
-		return_val += tab -> total_len;
-
-	}
+	print_len = 0;
+	print_len = ft_iterate_format(fmt, print_len, control, tab);
 	va_end(tab -> arguments);
 	free(tab);
 	if (control == -1)
 		return (-1);
-	return (return_val);
+	return (print_len);
 }

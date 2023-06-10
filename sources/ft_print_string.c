@@ -12,9 +12,9 @@
 
 #include "ft_printf.h"
 
-int		ft_print_string(t_print *tab, int control)
+int	ft_print_string(t_print *tab, int control)
 {
-	char *	str;
+	char	*str;
 
 	str = va_arg(tab -> arguments, char *);
 	if (!str)

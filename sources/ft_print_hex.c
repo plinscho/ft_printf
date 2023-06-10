@@ -12,41 +12,37 @@
 
 #include "ft_printf.h"
 
-int    ft_dectohex(unsigned int decimal, t_print *tab)
+int	ft_dectohex(unsigned int decimal, t_print *tab)
 {
-    if (decimal == 0)
-        return (0);
+	char			hexa_digit;
+	unsigned int	reminder;
+	int				control;
 
-    if(ft_dectohex(decimal/16, tab) == -1)
+	if (decimal == 0)
+		return (0);
+	if (ft_dectohex(decimal / 16, tab) == -1)
 		return (-1);
-
-    char         hexa_digit;
-    unsigned int reminder;
-    int          control;
-
-    control = 0;
-    reminder = decimal % 16;
-    if (reminder < 10)
-        hexa_digit = reminder + '0';
-    else
-        hexa_digit = reminder - 10 + 'a';
-    control = ft_putchar(hexa_digit, tab);
-    if (control == -1)
-        return (-1);
-    return (0);
+	control = 0;
+	reminder = decimal % 16;
+	if (reminder < 10)
+		hexa_digit = reminder + '0';
+	else
+		hexa_digit = reminder - 10 + 'a';
+	control = ft_putchar(hexa_digit, tab);
+	if (control == -1)
+		return (-1);
+	return (0);
 }
 
 int	ft_dectoptr(unsigned long int adress, t_print *tab)
 {
-	if (adress == 0)
-		return (0);
-	ft_dectoptr(adress/16, tab);
-
-	int 				control;
+	int					control;
 	unsigned long int	reminder;
 	char				digit;
 
-		
+	if (adress == 0)
+		return (0);
+	ft_dectoptr(adress / 16, tab);
 	control = 0;
 	reminder = adress % 16;
 	if (reminder < 10)
@@ -59,19 +55,19 @@ int	ft_dectoptr(unsigned long int adress, t_print *tab)
 	return (0);
 }
 
-int     ft_print_x(t_print *tab, const char c)
+int	ft_print_x(t_print *tab, const char c)
 {
-    unsigned int    decimal;
-    int control;
-    
-    control = 0;
-    tab ->specifier = c;
-    decimal = va_arg(tab->arguments, unsigned int); // capturing number
-    if (decimal == 0)
-        control = ft_putchar('0', tab);
-    else
-        control = ft_dectohex(decimal, tab);
-    if (control == -1)
-        return (-1);
-    return (0);
+	unsigned int	decimal;
+	int				control;
+
+	control = 0;
+	tab ->specifier = c;
+	decimal = va_arg(tab->arguments, unsigned int);
+	if (decimal == 0)
+		control = ft_putchar('0', tab);
+	else
+		control = ft_dectohex(decimal, tab);
+	if (control == -1)
+		return (-1);
+	return (0);
 }

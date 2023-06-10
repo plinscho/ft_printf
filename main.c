@@ -1,3 +1,5 @@
+/*
+
 #include "ft_printf.h"
 
 void check_len(int len_pf, int len_ftpf)
@@ -15,6 +17,23 @@ int main(void)
 	char c = 'a';
 	int len_pf = 0;
 	int len_ftpf = 0;
+
+	// TEST 1 -- LEN WITHOUT '%'
+	len_pf = printf("this is a string\n");
+	len_ftpf = ft_printf("this is a string\n");
+	check_len(len_pf, len_ftpf);
+
+	printf("size of t_print: %ld\n", sizeof(t_print));
+
+	// TEST 2 -- CHARS && strings
+	len_pf = 0;
+	len_pf = printf("string: %s string_2: %s\tchar: %c%c\n", string, string2, c, 'b');
+	len_ftpf = ft_printf("string: %s string_2: %s\tchar: %c%c\n", string, string2, c, 'b');
+	check_len(len_pf, len_ftpf);
+
+	ft_printf("\n\n         This is a test\n\n");
+
+
 
 // TEST -- INTS 'i' || 'd'
 	int a = 2147483647;
@@ -53,18 +72,7 @@ int main(void)
 
 	printf("\n\nTESTS\n\n" );	
 
-	// TEST 1 -- LEN WITHOUT '%'
-	len_pf = printf("this is a string\n");
-	len_ftpf = ft_printf("this is a string\n");
-	check_len(len_pf, len_ftpf);
-
-	printf("size of t_print: %ld\n", sizeof(t_print));
-
-	// TEST 2 -- CHARS && strings
-	len_pf = 0;
-	len_pf = printf("string: %s string_2: %s\tchar: %c%c\n", string, string2, c, 'b');
-	len_ftpf = ft_printf("string: %s string_2: %s\tchar: %c%c\n", string, string2, c, 'b');
-	check_len(len_pf, len_ftpf);
+	
 
 	// TEST 5 -- % 
 
@@ -96,12 +104,7 @@ int main(void)
 	//printf("char: %c mayus: %c\tASCII: %i\n", x, (x - 32), test);
 	ft_printf("char x|X: %c\n\n\n", x);
 
-	
-
-	
-
 	return (0);
-
 }
-
+*/
 

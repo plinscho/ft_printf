@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int ft_print_int(t_print *tab, int control)
+int	ft_print_int(t_print *tab, int control)
 {
 	int		num;
 	char	*nbr;

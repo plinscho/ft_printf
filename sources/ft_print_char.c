@@ -12,14 +12,14 @@
 
 #include "ft_printf.h"
 
-int     ft_print_char(t_print *tab, int control)
+int	ft_print_char(t_print *tab, int control)
 {
-    char    a;
+	char	a;
 
-    a = va_arg(tab -> arguments, int);
-    control = ft_putchar(a, tab);
-    if (control == -1)
-        return (-1);
-    tab -> total_len += control;
-    return (0);
+	a = va_arg(tab -> arguments, int);
+	control = ft_putchar(a, tab);
+	if (control == -1)
+		return (-1);
+	tab -> total_len += control;
+	return (0);
 }
