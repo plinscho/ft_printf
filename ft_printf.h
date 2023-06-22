@@ -6,7 +6,7 @@
 /*   By: plinscho <plinscho@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 11:17:56 by plinscho          #+#    #+#             */
-/*   Updated: 2023/06/09 16:48:17 by plinscho         ###   ########.fr       */
+/*   Updated: 2023/06/22 16:55:55 by plinscho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include <stdarg.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "libft.h"
-# include <stdio.h> // OJO ELIMINAR AL FINAL
+# include <stdio.h>
+# include "./libft/libft.h"
 
 typedef struct s_print
 {

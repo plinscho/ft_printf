@@ -13,6 +13,12 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
+/*	Aqui colocaremos los prototipos de las funciones que se buscaran en el 
+ *	
+ *
+ *  Tambien colocaremos los STRUCTS aqui
+ */
+
 # include <ctype.h>
 # include <stdlib.h>
 # include <unistd.h>

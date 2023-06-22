@@ -1,67 +1,44 @@
-# Makefile de ft_printf
-
-################################### VARIBABLES 
-
 NAME = libftprintf.a
-
-INC = include
-LIBFT = libft
-
-OBJ_DIR = objects/
-SRC_DIR = sources/
-
-CCs = gcc
-CFLAGS = -Wall -Wextra -Werror -I
+LIB = ./libft/
+LIBA = $(LIB)libft.a
+CFLAGS = -Wall -Wextra -Werror -I ./ -MMD
+PRINTF = ft_printf.h
+DEPS = $(OBJECTS:.o=.d)
 AR = ar rcs
+OBJECTS = ft_printf.o ft_print_char.o ft_print_string.o ft_print_ptr.o \
+		  ft_print_int.o ft_print_unsigned.o ft_print_hex.o ft_utils.o
 
-RM = rm -f
+%.o: %.c 
+	@printf "\rCompiling ft_printf: $< \n"
+	cc -c ${CFLAGS} $< -o $@
 
-################################## SOURCES
+all: ${NAME} 
+	
+-include $(DEPS)
 
-SRC_FILES = ft_printf ft_print_char ft_print_int ft_print_string ft_utils \
-			ft_print_unsigned ft_print_hex ft_print_ptr
+${NAME}: ${OBJECTS} ${LIBA} Makefile
+	cp $(LIBA) $(NAME)
+	${AR} ${NAME} ${OBJECTS}
+	@printf "ft_printf library compiled successfully!\n"
 
-SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
-OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
+${LIBA}:
+	make -C $(LIB)
 
-OBJF = .cache_obj
-
-################################### REGLAS DE COMPILACION
-
-all: $(NAME)
-
-$(NAME): $(OBJ)
-		@make -C $(LIBFT)
-		@echo "\nlibft.a done... \n"
-		@cp libft/libft.a .
-		@mv libft.a $(NAME)
-		@$(AR) $(NAME) $(OBJ)
-		@echo "\n ft_printf: Compilation done!\n"
-
-$(OBJ_DIR)%.o : $(SRC_DIR)%.c | $(OBJF)
-		@echo "Compiling : $< "c
-		@$(CCs) $(CFLAGS) $(INC) -c $< -o $@
-
-$(OBJF):
-		@mkdir -p $(OBJ_DIR)
+fclean: clean
+	@make fclean -C $(LIB) --no-print-directory
+	@rm -rf ${NAME}
+	@printf "Cleaned ft_printf and libft directories!\n"
 
 clean:
-		@$(RM) -rf $(OBJ_DIR)
-		@make clean -C $(LIBFT)
-		@echo "ft_printf object files cleaned :D"
-
-fclean:	clean
-		@$(RM) -f $(NAME)
-		@$(RM) -f $(LIBFT)/libft.a
-		@$(RM) main
-		@echo "ft_printf files cleaned!"
-		@echo "libft files cleaned!"
+	@make clean -C $(LIB) --no-print-directory
+	@rm -f ${OBJECTS} $(DEPS)
+	@printf "Cleaned object files!\n"
 
 re: fclean all
-		@echo "Cleaned and rebuild everything \n"
 
-main: $(NAME) main.c
-		@cc main.c -L. -lftprintf -o main -I$(INC) -L./$(LIBFT) -lft
+#main: ${NAME} main.c
+#	@cc main.c ${NAME} -I./include/libft -L./include/libft -lft -o printf
+#	@printf "Main program compiled successfully!\n"
 
-.PHONY: all clean fclean re main
+.PHONY: clean all fclean re
 
