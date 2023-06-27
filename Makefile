@@ -1,4 +1,5 @@
 NAME = libftprintf.a
+LIB2 = ./libft
 LIB = ./libft/
 LIBA = $(LIB)libft.a
 CFLAGS = -Wall -Wextra -Werror -I ./ -MMD
@@ -12,8 +13,13 @@ OBJECTS = ft_printf.o ft_print_char.o ft_print_string.o ft_print_ptr.o \
 	@printf "\rCompiling ft_printf: $< \n"
 	cc -c ${CFLAGS} $< -o $@
 
-all: ${NAME} 
-	
+all:
+	make -C libft
+	make $(NAME)
+
+#lib:
+#	make -C libft
+		
 -include $(DEPS)
 
 ${NAME}: ${OBJECTS} ${LIBA} Makefile
@@ -21,8 +27,8 @@ ${NAME}: ${OBJECTS} ${LIBA} Makefile
 	${AR} ${NAME} ${OBJECTS}
 	@printf "ft_printf library compiled successfully!\n"
 
-${LIBA}:
-	make -C $(LIB)
+# ${LIBA}: $(LIB)*.o
+#	make -C $(LIB)
 
 fclean: clean
 	@make fclean -C $(LIB) --no-print-directory
